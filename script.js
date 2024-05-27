@@ -21,7 +21,7 @@ fetch('geojson/BV_Dore.geojson')
     });
 
 // Charger la couche réseau hydrographique avec la projection Lambert 93
-fetch('geojson/reseau_hydrographique_2.geojson')
+fetch('geojson/reseau_hydrographique.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
