@@ -27,7 +27,7 @@ fetch('geojson/reseau_hydrographique_2.geojson')
         L.geoJSON(data, {
             style: function (feature) {
                 // Récupérer la valeur de IMPORTANCE
-                var importance = feature.properties.IMPORTANCE;
+                var importance = feature.properties.ClassCESAM;
                 // Définir l'épaisseur en fonction de la valeur de IMPORTANCE
                 var weight;
                 switch(importance) {
@@ -35,16 +35,10 @@ fetch('geojson/reseau_hydrographique_2.geojson')
                         weight = 3; // Par exemple, si IMPORTANCE est 1, l'épaisseur est 5
                         break;
                     case 2:
-                        weight = 2.5; // Par exemple, si IMPORTANCE est 2, l'épaisseur est 4
+                        weight = 2; // Par exemple, si IMPORTANCE est 2, l'épaisseur est 4
                         break;
                     case 3:
-                        weight = 2; // Par exemple, si IMPORTANCE est 3, l'épaisseur est 3
-                        break;
-                    case 4:
-                        weight = 1.5; // Par exemple, si IMPORTANCE est 4, l'épaisseur est 2
-                        break;
-                    case 5:
-                        weight = 1; // Par exemple, si IMPORTANCE est 5, l'épaisseur est 1
+                        weight = 1; // Par exemple, si IMPORTANCE est 3, l'épaisseur est 3
                         break;
                     default:
                         weight = 0.5; // Valeur par défaut
@@ -77,7 +71,7 @@ fetch('geojson/Stations_2.geojson')
                 if (feature.properties && feature.properties.link) {
                     // Concaténer le chemin du dossier PDF avec la valeur de la propriété 'link'
                     var pdfUrl = '/Cartes_Dore/pdf/' + feature.properties.link + '.pdf';
-                    layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">Voir le PDF</a>');
+                    layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">feature.properties.CdStationH</a>');
                 }
             }
         }).addTo(map);
