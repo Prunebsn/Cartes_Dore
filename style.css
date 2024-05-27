@@ -5,3 +5,32 @@
     fill: none; /* Supprimer le remplissage des stations */
     stroke: black; /* Couleur de contour des stations */
 }
+
+Copier le code
+/* Styles pour les cours d'eau importants */
+.reseau-hydrographique-1 {
+    color: blue;
+    weight: 3;
+    /* Autres styles */
+}
+
+/* Styles pour les cours d'eau moyennement importants */
+.reseau-hydrographique-2 {
+    color: green;
+    weight: 2;
+    /* Autres styles */
+}
+
+/* Styles pour les cours d'eau peu importants */
+.reseau-hydrographique-3 {
+    color: blue;
+    weight: 1;
+    /* Autres styles */
+}
+
+/* Styles pour les cours d'eau peu importants */
+.reseau-hydrographique-NULL {
+    color: blue;
+    weight: 0.5;
+    /* Autres styles */
+}
