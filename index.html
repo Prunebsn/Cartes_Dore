@@ -5,11 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Leaflet CSS -->
+    <!-- Inclure la bibliothèque Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Votre CSS -->
-    <link rel="stylesheet" href="style.css" /> <!-- Ajout du lien vers le fichier CSS -->
 
+    <!-- Votre CSS personnalisé -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Styles supplémentaires pour la carte -->
     <style>
         #map {
             height: 100vh;
@@ -17,14 +19,13 @@
     </style>
 </head>
 <body>
+    <!-- Div pour afficher la carte -->
     <div id="map"></div>
 
-    <!-- Leaflet JavaScript -->
+    <!-- Inclure la bibliothèque Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <!-- Leaflet Proj pour la projection Lambert 93 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.6/proj4.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-proj/1.1.0/proj4leaflet.min.js"></script>
-    <!-- Votre JavaScript -->
+
+    <!-- Inclure votre script JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
