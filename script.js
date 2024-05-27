@@ -26,8 +26,33 @@ fetch('geojson/reseau_hydrographique_2.geojson')
     .then(data => {
         L.geoJSON(data, {
             style: function (feature) {
+                // Récupérer la valeur de IMPORTANCE
+                var importance = feature.properties.IMPORTANCE;
+                // Définir l'épaisseur en fonction de la valeur de IMPORTANCE
+                var weight;
+                switch(importance) {
+                    case 1:
+                        weight = 3; // Par exemple, si IMPORTANCE est 1, l'épaisseur est 5
+                        break;
+                    case 2:
+                        weight = 2.5; // Par exemple, si IMPORTANCE est 2, l'épaisseur est 4
+                        break;
+                    case 3:
+                        weight = 2; // Par exemple, si IMPORTANCE est 3, l'épaisseur est 3
+                        break;
+                    case 4:
+                        weight = 1.5; // Par exemple, si IMPORTANCE est 4, l'épaisseur est 2
+                        break;
+                    case 5:
+                        weight = 1; // Par exemple, si IMPORTANCE est 5, l'épaisseur est 1
+                        break;
+                    default:
+                        weight = 0.5; // Valeur par défaut
+                }
+                // Retourner le style avec l'épaisseur calculée
                 return {
-                    className: 'reseau-hydrographique' // Ajouter la classe CSS au réseau hydrographique
+                    color: 'blue', // Couleur des cours d'eau
+                    weight: weight // Épaisseur déterminée par IMPORTANCE
                 };
             }
         }).addTo(map);
