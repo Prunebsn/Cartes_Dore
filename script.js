@@ -1,74 +1,62 @@
-// Initialiser la carte
-var map = L.map('map').setView([46.2276, 2.2137], 6); // Centré sur la France initialement
+// Définir la projection Lambert 93
+var crs = new L.Proj.CRS('EPSG:2154',
+    '+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+    {
+        resolutions: [8192, 4096, 2048, 1024, 512, 256, 128],
+        origin: [0, 0],
+        bounds: L.bounds([0, 0], [700000, 6600000])
+    }
+);
+
+// Initialiser la carte avec la projection Lambert 93
+var map = L.map('map', {
+    crs: crs
+}).setView([46.2276, 2.2137], 6); // Centré sur la France
 
 // Ajouter une couche de base
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19
 }).addTo(map);
 
-// Fonction pour styliser la couche BV_Stations
-function styleBVStations(feature) {
-    return {
-        color: 'black',
-        weight: 2,
-        fillOpacity: 0
-    };
-}
-
-// Charger les données GeoJSON pour BV_Stations et centrer la carte sur cette couche
+// Charger la couche BV_Stations avec la projection Lambert 93
 fetch('geojson/BV_Stations.geojson')
     .then(response => response.json())
     .then(data => {
-        var bvStationsLayer = L.geoJSON(data, {
-            style: styleBVStations
+        L.geoJSON(data, {
+            crs: crs // Spécifier la projection Lambert 93
         }).addTo(map);
-        map.fitBounds(bvStationsLayer.getBounds());
     });
 
-// Fonction pour styliser la couche reseau_hydrographique
-function styleReseauHydrographique(feature) {
-    var importance = feature.properties.IMPORTANCE;
-    var weight = 6 - importance; // 1 -> 5, 2 -> 4, etc.
-    return {
-        color: 'blue',
-        weight: weight
-    };
-}
-
-// Charger les données GeoJSON pour reseau_hydrographique
+// Charger la couche réseau hydrographique avec la projection Lambert 93
 fetch('geojson/reseau_hydrographique.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
-            style: styleReseauHydrographique
+            crs: crs // Spécifier la projection Lambert 93
         }).addTo(map);
     });
 
-// Fonction pour créer des points interactifs avec des étiquettes pour les stations
-function onEachStation(feature, layer) {
-    if (feature.properties && feature.properties.link) {
-        layer.bindPopup('<a href="' + feature.properties.link + '" target="_blank">Voir le PDF</a>');
-    }
-    if (feature.properties && feature.properties.CdStationH) {
-        layer.bindTooltip(feature.properties.CdStationH, { permanent: true, direction: "top" });
-    }
-}
-
-// Charger les données GeoJSON pour Stations
+// Charger la couche des stations avec la projection Lambert 93 et popups
 fetch('geojson/Stations.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
-            onEachFeature: onEachStation,
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
-                    radius: 5,
-                    fillColor: "#ff7800",
-                    color: "#000",
+                    radius: 8,
+                    fillColor: '#ff7800',
+                    color: '#000',
                     weight: 1,
                     opacity: 1,
                     fillOpacity: 0.8
                 });
-            }
+            },
+            onEachFeature: function (feature, layer) {
+                if (feature.properties && feature.properties.CdStationH) {
+                    layer.bindPopup('<a href="' + feature.properties.link + '" target="_blank">Voir le PDF</a>');
+                }
+            },
+            crs: crs // Spécifier la projection Lambert 93
         }).addTo(map);
     });
+
