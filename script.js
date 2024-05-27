@@ -14,7 +14,7 @@ fetch('geojson/BV_Stations.geojson')
         L.geoJSON(data, {
             style: function (feature) {
                 return {
-                    className: 'bv-station' // Ajouter la classe CSS aux stations
+                    className: 'BV_Stations' // Ajouter la classe CSS aux stations
                 };
             }
         }).addTo(map);
