@@ -34,7 +34,7 @@ fetch('geojson/reseau_hydrographique.geojson')
     });
 
 // Charger la couche des stations avec la projection Lambert 93 et popups
-fetch('geojson/Stations.geojson')
+fetch('geojson/Stations_2.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
