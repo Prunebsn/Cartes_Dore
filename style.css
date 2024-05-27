@@ -2,10 +2,6 @@
 
 /* Ajoutez ici vos styles personnalisés */
 .BV_Stations {
-    fill: red; /* Couleur de remplissage des stations */
+    fill: none; /* Supprimer le remplissage des stations */
     stroke: black; /* Couleur de contour des stations */
-}
-.reseau-hydrographique {
-    color: blue; /* Couleur des cours d'eau */
-    weight: 2; /* Épaisseur du contour des cours d'eau */
 }
