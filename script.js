@@ -29,24 +29,22 @@ fetch('geojson/reseau_hydrographique_2.geojson')
                 // Récupérer la valeur de IMPORTANCE
                 var importance = feature.properties.ClassCESAM;
                 // Définir l'épaisseur en fonction de la valeur de IMPORTANCE
-                var weight;
-                switch(importance) {
-                    case 1:
-                        weight = 3; // Par exemple, si IMPORTANCE est 1, l'épaisseur est 5
-                        break;
-                    case 2:
-                        weight = 2; // Par exemple, si IMPORTANCE est 2, l'épaisseur est 4
-                        break;
-                    case 3:
-                        weight = 1; // Par exemple, si IMPORTANCE est 3, l'épaisseur est 3
-                        break;
-                    default:
-                        weight = 0.5; // Valeur par défaut
+                var classToAdd;
+
+                // Déterminez la classe à ajouter en fonction de la valeur de la table attributaire
+                if (importance === 1) {
+                    classToAdd = 'reseau-hydrographique-1';
+                } else if (importance === 2) {
+                    classToAdd = 'reseau-hydrographique-2';
+                } else if (importance === 3) {
+                    classToAdd = 'reseau-hydrographique-3';
+                } else {
+                    classToAdd = 'reseau-hydrographique-NULL';
                 }
-                // Retourner le style avec l'épaisseur calculée
+
+                // Ajoutez la classe au réseau hydrographique
                 return {
-                    color: 'blue', // Couleur des cours d'eau
-                    weight: weight // Épaisseur déterminée par IMPORTANCE
+                    className: classToAdd
                 };
             }
         }).addTo(map);
