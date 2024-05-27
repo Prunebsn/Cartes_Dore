@@ -1,8 +1,8 @@
 // Initialiser la carte
-var map = L.map('map').setView([45.571755, 3.647461], 12);
+var map = L.map('map').setView([45.571, 3.64], 12);
 
 // Charger une couche de base OpenStreetMap
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
