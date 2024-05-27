@@ -7,7 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Charger les données GeoJSON
-fetch('geojson/bassins_versants.geojson')
+fetch('geojson/BV_Stations.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data).addTo(map);
@@ -19,7 +19,7 @@ fetch('geojson/reseau_hydrographique.geojson')
         L.geoJSON(data).addTo(map);
     });
 
-fetch('geojson/points_interet.geojson')
+fetch('geojson/Stations.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
