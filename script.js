@@ -8,7 +8,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Charger la couche BV_Stations avec la projection Lambert 93
-fetch('geojson/BV_Stations.geojson')
+fetch('geojson/BV_Dore.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
@@ -21,7 +21,7 @@ fetch('geojson/BV_Stations.geojson')
     });
 
 // Charger la couche réseau hydrographique avec la projection Lambert 93
-fetch('geojson/reseau_hydrographique.geojson')
+fetch('geojson/reseau_hydrographique_2.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
