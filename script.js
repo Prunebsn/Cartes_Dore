@@ -69,7 +69,7 @@ fetch('geojson/Stations.geojson')
             onEachFeature: function (feature, layer) {
                 if (feature.properties && feature.properties.link) {
                     // Concaténer le chemin du dossier PDF avec la valeur de la propriété 'link'
-                    var pdfUrl = '/PDF/' + feature.properties.link;
+                    var pdfUrl = '/pdf/' + feature.properties.link;
                     layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">Voir le PDF</a>');
                 }
             },
