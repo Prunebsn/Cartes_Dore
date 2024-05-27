@@ -8,18 +8,21 @@ var crs = new L.Proj.CRS('EPSG:2154',
     }
 );
 
-// Définir les coordonnées du centre de la France en Lambert 93
-var franceCenter = crs.project(L.latLng(46.2276, 2.2137));
-
 // Initialiser la carte avec la projection Lambert 93
 var map = L.map('map', {
     crs: crs
-}).setView([franceCenter.y, franceCenter.x], 6); // Centré sur la France en Lambert 93
+});
 
-// Ajouter une couche de base
+// Charger une couche de base OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19
 }).addTo(map);
+
+// Définir les coordonnées du centre de la France en Lambert 93
+var franceCenter = crs.project(L.latLng(46.603354, 1.888334)); // Coordonnées du centre de la France en Lambert 93
+
+// Centrer la carte sur la France en Lambert 93
+map.setView([franceCenter.y, franceCenter.x], 6);
 
 // Charger la couche BV_Stations avec la projection Lambert 93
 fetch('geojson/BV_Stations.geojson')
