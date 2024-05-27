@@ -8,10 +8,13 @@ var crs = new L.Proj.CRS('EPSG:2154',
     }
 );
 
+// Définir les coordonnées du centre de la France en Lambert 93
+var franceCenter = crs.project(L.latLng(46.2276, 2.2137));
+
 // Initialiser la carte avec la projection Lambert 93
 var map = L.map('map', {
     crs: crs
-}).setView([46.2276, 2.2137], 6); // Centré sur la France
+}).setView([franceCenter.y, franceCenter.x], 6); // Centré sur la France en Lambert 93
 
 // Ajouter une couche de base
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
