@@ -23,7 +23,12 @@ fetch('geojson/BV_Stations.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
-            crs: crs // Spécifier la projection Lambert 93
+            crs: crs, // Spécifier la projection Lambert 93
+            style: function (feature) {
+                return {
+                    className: 'bv-station' // Ajouter la classe CSS aux stations
+                };
+            }
         }).addTo(map);
     });
 
@@ -32,7 +37,12 @@ fetch('geojson/reseau_hydrographique.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
-            crs: crs // Spécifier la projection Lambert 93
+            crs: crs, // Spécifier la projection Lambert 93
+            style: function (feature) {
+                return {
+                    className: 'reseau-hydrographique' // Ajouter la classe CSS au réseau hydrographique
+                };
+            }
         }).addTo(map);
     });
 
