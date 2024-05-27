@@ -1,7 +1,7 @@
 /* style.css */
 
 /* Ajoutez ici vos styles personnalisés */
-.bv-station {
+.BV_Stations {
     fill: red; /* Couleur de remplissage des stations */
     stroke: black; /* Couleur de contour des stations */
 }
