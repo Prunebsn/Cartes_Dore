@@ -23,7 +23,6 @@ fetch('geojson/BV_Stations.geojson')
     .then(response => response.json())
     .then(data => {
         L.geoJSON(data, {
-            crs: crs, // Spécifier la projection Lambert 93
             style: function (feature) {
                 return {
                     className: 'bv-station' // Ajouter la classe CSS aux stations
