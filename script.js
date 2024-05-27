@@ -52,8 +52,10 @@ fetch('geojson/Stations.geojson')
                 });
             },
             onEachFeature: function (feature, layer) {
-                if (feature.properties && feature.properties.CdStationH) {
-                    layer.bindPopup('<a href="' + feature.properties.link + '" target="_blank">Voir le PDF</a>');
+                if (feature.properties && feature.properties.link) {
+                    // Concaténer le chemin du dossier PDF avec la valeur de la propriété 'link'
+                    var pdfUrl = '/PDF/' + feature.properties.link;
+                    layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">Voir le PDF</a>');
                 }
             },
             crs: crs // Spécifier la projection Lambert 93
