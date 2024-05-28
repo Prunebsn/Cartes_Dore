@@ -1,6 +1,11 @@
 // Initialiser la carte
 var map = L.map('map').setView([45.571, 3.64], 12);
 
+// Ajouter une couche OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
 // Ajouter un contrôle personnalisé pour le lien PDF
 L.Control.LisezMoi = L.Control.extend({
     onAdd: function(map) {
