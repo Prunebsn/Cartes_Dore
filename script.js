@@ -1,9 +1,6 @@
 // Initialiser la carte
 var map = L.map('map').setView([45.571, 3.64], 12);
 
-// Initialiser la carte (assurez-vous que cela se fait avant d'ajouter le contrôle personnalisé)
-var map = L.map('map').setView([45.571, 3.64], 12);
-
 // Ajouter un contrôle personnalisé pour le lien PDF
 L.Control.LisezMoi = L.Control.extend({
     onAdd: function(map) {
