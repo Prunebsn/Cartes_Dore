@@ -26,9 +26,6 @@ L.control.mapTitle = function(opts) {
 
 L.control.mapTitle({ position: 'topcenter' }).addTo(map);
 
-// Ajuster le z-index du titre pour qu'il ne couvre pas la carte
-document.querySelector('.leaflet-control-map-title').style.zIndex = '1000';
-
 // Charger la couche BV_Stations avec la projection Lambert 93
 fetch('geojson/BV_Dore.geojson')
     .then(response => response.json())
