@@ -56,7 +56,7 @@ fetch('geojson/Stations_2.geojson')
     .then(data => {
         var stationsLayer = L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
-                return L.Marker(latlng, { className: 'station-marker' });
+                return L.marker(latlng, { className: 'station-marker' });
             },
             onEachFeature: function (feature, layer) {
                 if (feature.properties && feature.properties.link) {
