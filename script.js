@@ -26,12 +26,14 @@ fetch('geojson/reseau_hydrographique.geojson')
     .then(data => {
         L.geoJSON(data, {
             style: function (feature) {
-                // Récupérer la valeur de IMPORTANCE
+                // Récupérer la valeur de ClassCESAM
                 var importance = feature.properties.ClassCESAM;
-                // Définir l'épaisseur en fonction de la valeur de IMPORTANCE
+                console.log('ClassCESAM:', importance); // Log the value of ClassCESAM
+
+                // Définir la classe CSS en fonction de la valeur de ClassCESAM
                 var classToAdd;
 
-                // Déterminez la classe à ajouter en fonction de la valeur de la table attributaire
+                // Déterminer la classe à ajouter en fonction de la valeur de la table attributaire
                 if (importance === '1') {
                     classToAdd = 'reseau-hydrographique-1';
                 } else if (importance === '2') {
@@ -42,7 +44,9 @@ fetch('geojson/reseau_hydrographique.geojson')
                     classToAdd = 'reseau-hydrographique-NULL';
                 }
 
-                // Ajoutez la classe au réseau hydrographique
+                console.log('Class to add:', classToAdd); // Log the class to add
+
+                // Ajouter la classe au réseau hydrographique
                 return {
                     className: classToAdd
                 };
