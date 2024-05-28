@@ -27,13 +27,6 @@
     /* Autres styles */
 }
 
-/* Styles pour les cours d'eau peu importants */
-.reseau-hydrographique-NULL {
-    stroke: blue;
-    stroke-weigh: 0.5;
-    /* Autres styles */
-}
-
 /* Style pour les marqueurs de stations */
 .station-marker {
     radius: 8;
