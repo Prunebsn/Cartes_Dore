@@ -32,11 +32,11 @@ fetch('geojson/reseau_hydrographique.geojson')
                 var classToAdd;
 
                 // Déterminez la classe à ajouter en fonction de la valeur de la table attributaire
-                if (importance === 1) {
+                if (importance === '1') {
                     classToAdd = 'reseau-hydrographique-1';
-                } else if (importance === 2) {
+                } else if (importance === '2') {
                     classToAdd = 'reseau-hydrographique-2';
-                } else if (importance === 3) {
+                } else if (importance === '3') {
                     classToAdd = 'reseau-hydrographique-3';
                 } else {
                     classToAdd = 'reseau-hydrographique-NULL';
