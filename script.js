@@ -57,20 +57,14 @@ fetch('geojson/Stations_2.geojson')
         L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
                 return L.marker(latlng, {
-                    icon: L.icon({
-                        iconUrl: L.Icon.Default.prototype.options.iconUrl,
-                        iconSize: [25, 41], // Taille de l'icône par défaut
-                        iconAnchor: [12, 41], // Ancre de l'icône par défaut
-                        popupAnchor: [1, -34], // Ancre du popup par défaut
-                        shadowUrl: L.Icon.Default.prototype.options.shadowUrl,
-                        shadowSize: [41, 41] // Taille de l'ombre par défaut
-                });
+                    // Utiliser l'icône par défaut de Leaflet
+                return L.marker(latlng);
             },
             onEachFeature: function (feature, layer) {
                 if (feature.properties && feature.properties.link) {
                     // Concaténer le chemin du dossier PDF avec la valeur de la propriété 'link'
                     var pdfUrl = '/Cartes_Dore/pdf/' + feature.properties.link + '.pdf';
-                    layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">feature.properties.CdStationH</a>');
+                    layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">' + feature.properties.CdStationH + '</a>');
                 }
             }
         }).addTo(map);
