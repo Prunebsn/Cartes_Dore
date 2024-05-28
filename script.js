@@ -74,4 +74,8 @@ fetch('geojson/Stations_2.geojson')
                 }
             }
         }).addTo(map);
+        // Amener la couche des stations au premier plan
+        stationsLayer.eachLayer(function(layer) {
+            layer.bringToFront();
+        });
     });
