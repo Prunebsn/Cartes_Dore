@@ -14,6 +14,7 @@ L.Control.LisezMoi = L.Control.extend({
     }
 });
 
+
 // Ajouter le contrôle à la carte
 L.control.lisezMoi = function(opts) {
     return new L.Control.LisezMoi(opts);
@@ -21,6 +22,16 @@ L.control.lisezMoi = function(opts) {
 
 L.control.lisezMoi({ position: 'topright' }).addTo(map);
 
+// Ajouter le grand titre au-dessus de la carte
+var mapTitle = document.createElement('div');
+mapTitle.innerHTML = '<h1>Restitution de la modélisation hydrologique des stations hydrométriques de la Dore.</h1>';
+mapTitle.style.position = 'absolute';
+mapTitle.style.top = '20px';
+mapTitle.style.left = '20px';
+mapTitle.style.fontSize = '24px';
+mapTitle.style.fontWeight = 'bold';
+mapTitle.style.zIndex = '1000'; // Assure que le titre soit au-dessus de la carte
+document.body.appendChild(mapTitle);
 // Charger une couche de base OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
