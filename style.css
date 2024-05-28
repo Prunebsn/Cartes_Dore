@@ -26,13 +26,3 @@
     stroke-weigh: 1;
     /* Autres styles */
 }
-
-/* Style pour les marqueurs de stations */
-.station-marker {
-    radius: 8;
-    fillColor: 'red';
-    color: 'black';
-    weight: 1;
-    opacity: 1;
-    fillOpacity: 0.8;
-}
