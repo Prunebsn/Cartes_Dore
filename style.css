@@ -1,19 +1,25 @@
-/* style.css */
-.leaflet-control-lisez-moi {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+/* Styles pour le grand titre */
+#map-title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1000; /* Assure que le titre soit au-dessus de la carte */
 }
 
-.leaflet-control-lisez-moi a {
+/* Styles pour le bouton "Lisez Moi" */
+#readme-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
     text-decoration: none;
-    color: blue;
-    font-weight: bold;
+    z-index: 1000; /* Assure que le bouton soit au-dessus de la carte */
 }
 
 /* Ajoutez ici vos styles personnalisés */
