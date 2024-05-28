@@ -1,16 +1,14 @@
 // Initialiser la carte
 var map = L.map('map').setView([45.571, 3.64], 12);
 
-// Ajouter une couche OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+// Initialiser la carte (assurez-vous que cela se fait avant d'ajouter le contrôle personnalisé)
+var map = L.map('map').setView([45.571, 3.64], 12);
 
-// Ajouter un contrôle personnalisé pour le grand titre
-L.Control.MapTitle = L.Control.extend({
+// Ajouter un contrôle personnalisé pour le lien PDF
+L.Control.LisezMoi = L.Control.extend({
     onAdd: function(map) {
-        var div = L.DomUtil.create('div', 'leaflet-control-map-title');
-        div.innerHTML = '<h1>Restitution de la modélisation hydrologique des stations hydrométriques de la Dore.</h1>';
+        var div = L.DomUtil.create('div', 'leaflet-control-lisez-moi');
+        div.innerHTML = '<a href="path/to/your/notice.pdf" target="_blank">Lisez Moi</a>';
         return div;
     },
 
@@ -20,11 +18,18 @@ L.Control.MapTitle = L.Control.extend({
 });
 
 // Ajouter le contrôle à la carte
-L.control.mapTitle = function(opts) {
-    return new L.Control.MapTitle(opts);
+L.control.lisezMoi = function(opts) {
+    return new L.Control.LisezMoi(opts);
 }
 
-L.control.mapTitle({ position: 'topcenter' }).addTo(map);
+L.control.lisezMoi({ position: 'topright' }).addTo(map);
+
+// Charger les autres couches, etc.
+
+// Ajouter une couche OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 // Charger la couche BV_Stations avec la projection Lambert 93
 fetch('geojson/BV_Dore.geojson')
