@@ -56,9 +56,14 @@ fetch('geojson/Stations_2.geojson')
     .then(data => {
         L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {
-                    // Utiliser l'icône par défaut de Leaflet
-                return L.marker(latlng);
+                return L.circleMarker(latlng, {
+                    radius: 8,
+                    fillColor: '#ff7800',
+                    color: '#000',
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                });
             },
             onEachFeature: function (feature, layer) {
                 if (feature.properties && feature.properties.link) {
