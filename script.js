@@ -74,8 +74,7 @@ fetch('geojson/Stations_2.geojson')
                 }
             }
         }).addTo(map);
-        // Amener la couche des stations au premier plan
-        stationsLayer.eachLayer(function(layer) {
-            layer.bringToFront();
-        });
+        
+        // Définir le zIndex pour les stations pour les amener au premier plan
+        stationsLayer.setZIndex(1000); // Une valeur arbitraire plus élevée que les autres couches
     });
