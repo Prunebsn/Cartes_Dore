@@ -53,7 +53,7 @@ fetch('geojson/reseau_hydrographique.geojson')
 var myIcon = L.icon({
     iconUrl: '/Cartes_Dore/pin.png',
     iconSize: [38, 50], // Taille de l'icône
-    iconAnchor: [22, 94], // Point d'ancrage de l'icône
+    iconAnchor: [22, 50], // Point d'ancrage de l'icône
     popupAnchor: [-3, -76] // Point d'ancrage du popup
 });
 
