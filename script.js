@@ -49,13 +49,6 @@ fetch('geojson/reseau_hydrographique.geojson')
             }
         }).addTo(map);
     });
-// Création d'une icône personnalisée
-var myIcon = L.icon({
-    iconUrl: '/Cartes_Dore/pin.png',
-    iconSize: [38, 50], // Taille de l'icône
-    iconAnchor: [0, 0], // Point d'ancrage de l'icône
-    popupAnchor: [-3, -76] // Point d'ancrage du popup
-});
 
 // Charger la couche des stations avec la projection Lambert 93 et popups
 fetch('geojson/Stations_2.geojson')
@@ -63,7 +56,7 @@ fetch('geojson/Stations_2.geojson')
     .then(data => {
         var stationsLayer = L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, { icon: myIcon });
+                return L.marker(latlng, { className: 'station-maker' });
             },
             onEachFeature: function (feature, layer) {
                 if (feature.properties && feature.properties.link) {
