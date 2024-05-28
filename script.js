@@ -6,26 +6,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Ajouter un contrôle personnalisé pour le lien PDF
-L.Control.LisezMoi = L.Control.extend({
-    onAdd: function(map) {
-        var div = L.DomUtil.create('div', 'leaflet-control-lisez-moi');
-        div.innerHTML = '<a href="path/to/your/notice.pdf" target="_blank">Lisez Moi</a>';
-        return div;
-    },
-
-    onRemove: function(map) {
-        // Rien à faire ici
-    }
-});
-
-// Ajouter le contrôle à la carte
-L.control.lisezMoi = function(opts) {
-    return new L.Control.LisezMoi(opts);
-}
-
-L.control.lisezMoi({ position: 'topright' }).addTo(map);
-
 // Ajouter un contrôle personnalisé pour le grand titre
 L.Control.MapTitle = L.Control.extend({
     onAdd: function(map) {
@@ -45,6 +25,9 @@ L.control.mapTitle = function(opts) {
 }
 
 L.control.mapTitle({ position: 'topcenter' }).addTo(map);
+
+// Ajuster le z-index du titre pour qu'il ne couvre pas la carte
+document.querySelector('.leaflet-control-map-title').style.zIndex = '1000';
 
 // Charger la couche BV_Stations avec la projection Lambert 93
 fetch('geojson/BV_Dore.geojson')
@@ -67,7 +50,6 @@ fetch('geojson/reseau_hydrographique.geojson')
             style: function (feature) {
                 // Récupérer la valeur de ClassCESAM
                 var importance = feature.properties.ClassCESAM;
-                console.log('ClassCESAM:', importance); // Log the value of ClassCESAM
 
                 // Définir la classe CSS en fonction de la valeur de ClassCESAM
                 var classToAdd;
@@ -82,8 +64,6 @@ fetch('geojson/reseau_hydrographique.geojson')
                 } else {
                     classToAdd = 'reseau-hydrographique-NULL';
                 }
-
-                console.log('Class to add:', classToAdd); // Log the class to add
 
                 // Ajouter la classe au réseau hydrographique
                 return {
