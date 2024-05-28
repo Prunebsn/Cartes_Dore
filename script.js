@@ -46,6 +46,11 @@ fetch('geojson/reseau_hydrographique.geojson')
                 return {
                     className: classToAdd
                 };
+            },
+            onEachFeature: function (feature, layer) {
+                // Ajouter une popup qui affiche la valeur de la colonne "TOPONYME"
+                var toponyme = feature.properties.TOPONYME;
+                layer.bindPopup(toponyme);
             }
         }).addTo(map);
     });
