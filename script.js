@@ -54,7 +54,7 @@ fetch('geojson/reseau_hydrographique.geojson')
 fetch('geojson/Stations_2.geojson')
     .then(response => response.json())
     .then(data => {
-        L.geoJSON(data, {
+        var stationsLayer = L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
                     radius: 8,
@@ -69,12 +69,12 @@ fetch('geojson/Stations_2.geojson')
                 if (feature.properties && feature.properties.link) {
                     // Concaténer le chemin du dossier PDF avec la valeur de la propriété 'link'
                     var pdfUrl = '/Cartes_Dore/pdf/' + feature.properties.link + '.pdf';
-                    var stationsName = feature.properties.CdStationH + ':' + feature.properties.LbStationH
+                    var stationsName = feature.properties.CdStationH + ':' + feature.properties.LbStationH;
                     layer.bindPopup('<a href="' + pdfUrl + '" target="_blank">' + stationsName + '</a>');
                 }
             }
-        }).addTo(map);
-        
-        // Définir le zIndex pour les stations pour les amener au premier plan
-        stationsLayer.setZIndex(1000); // Une valeur arbitraire plus élevée que les autres couches
+        });
+
+        // Ajouter la couche des stations au-dessus des autres couches
+        stationsLayer.addTo(map);
     });
