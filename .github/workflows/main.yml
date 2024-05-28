@@ -1,4 +1,4 @@
-name: Run Codes
+name: Run Code
 
 on:
   push:
@@ -21,11 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run script.js
-        run: node script.js
-
-      - name: Run style.css
-        run: sass style.css
-
       - name: Run index.html
-        run: node index.html
+        run: |
+          npm run start:html
+
+      - name: Run script.js
+        run: |
+          npm run start:js
