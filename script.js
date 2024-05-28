@@ -22,21 +22,23 @@ L.control.lisezMoi = function(opts) {
 
 L.control.lisezMoi({ position: 'topright' }).addTo(map);
 
-// Ajouter le grand titre au-dessus de la carte
-var mapTitle = document.createElement('div');
-mapTitle.innerHTML = '<h1>Restitution de la modélisation hydrologique des stations hydrométriques de la Dore.</h1>';
-mapTitle.style.position = 'absolute';
-mapTitle.style.top = '20px';
-mapTitle.style.left = '20px';
+// Ajouter le grand titre au-dessus de la carte avec une case blanche en arrière-plan
+var mapTitleContainer = document.createElement('div');
+mapTitleContainer.style.position = 'absolute';
+mapTitleContainer.style.top = '20px';
+mapTitleContainer.style.left = '20px';
+mapTitleContainer.style.padding = '10px';
+mapTitleContainer.style.backgroundColor = 'white'; // Fond blanc
+mapTitleContainer.style.borderRadius = '5px'; // Coins arrondis
+mapTitleContainer.style.zIndex = '1000'; // Assure que le titre soit au-dessus de la carte
+
+var mapTitle = document.createElement('h1');
+mapTitle.textContent = 'Restitution de la modélisation hydrologique des stations hydrométriques de la Dore.';
 mapTitle.style.fontSize = '24px';
 mapTitle.style.fontWeight = 'bold';
-mapTitle.style.zIndex = '1000'; // Assure que le titre soit au-dessus de la carte
-document.body.appendChild(mapTitle);
-// Charger une couche de base OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+mapTitleContainer.appendChild(mapTitle);
+
+document.body.appendChild(mapTitleContainer);
 
 // Charger la couche BV_Stations avec la projection Lambert 93
 fetch('geojson/BV_Dore.geojson')
