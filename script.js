@@ -79,4 +79,3 @@ fetch('geojson/Stations_2.geojson')
             layer.bringToFront();
         });
     });
-    });
