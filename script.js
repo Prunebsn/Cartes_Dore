@@ -1,6 +1,26 @@
 // Initialiser la carte
 var map = L.map('map').setView([45.571, 3.64], 12);
 
+// Ajouter un contrôle personnalisé pour le lien PDF
+L.Control.LisezMoi = L.Control.extend({
+    onAdd: function(map) {
+        var div = L.DomUtil.create('div', 'leaflet-control-lisez-moi');
+        div.innerHTML = '<a href="Cartes_Dore/notice.pdf" target="_blank">Lisez Moi</a>';
+        return div;
+    },
+
+    onRemove: function(map) {
+        // Rien à faire ici
+    }
+});
+
+// Ajouter le contrôle à la carte
+L.control.lisezMoi = function(opts) {
+    return new L.Control.LisezMoi(opts);
+}
+
+L.control.lisezMoi({ position: 'topright' }).addTo(map);
+
 // Charger une couche de base OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
