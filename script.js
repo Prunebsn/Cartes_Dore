@@ -56,13 +56,14 @@ fetch('geojson/Stations_2.geojson')
     .then(data => {
         L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, {
-                    radius: 8,
-                    fillColor: '#ff7800',
-                    color: '#000',
-                    weight: 1,
-                    opacity: 1,
-                    fillOpacity: 0.8
+                return L.marker(latlng, {
+                    icon: L.icon({
+                        iconUrl: L.Icon.Default.prototype.options.iconUrl,
+                        iconSize: [25, 41], // Taille de l'icône par défaut
+                        iconAnchor: [12, 41], // Ancre de l'icône par défaut
+                        popupAnchor: [1, -34], // Ancre du popup par défaut
+                        shadowUrl: L.Icon.Default.prototype.options.shadowUrl,
+                        shadowSize: [41, 41] // Taille de l'ombre par défaut
                 });
             },
             onEachFeature: function (feature, layer) {
