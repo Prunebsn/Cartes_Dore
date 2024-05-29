@@ -25,27 +25,27 @@
 /* Styles pour les cours d'eau importants */
 .reseau-hydrographique-1 {
     stroke: blue;
-    stroke-width: 3;
+    stroke-width: 4;
     /* Autres styles */
 }
 
 /* Styles pour les cours d'eau moyennement importants */
 .reseau-hydrographique-2 {
     stroke: blue;
-    stroke-width: 2;
+    stroke-width: 3;
     /* Autres styles */
 }
 
 /* Styles pour les cours d'eau peu importants */
 .reseau-hydrographique-3 {
     stroke: blue;
-    stroke-width: 1;
+    stroke-width: 2;
     /* Autres styles */
 }
 /* Styles pour les cours d'eau peu importants */
 .reseau-hydrographique-NULL {
     stroke: blue;
-    stroke-width: 0.5;
+    stroke-width: 1;
     /* Autres styles */
 }
 
